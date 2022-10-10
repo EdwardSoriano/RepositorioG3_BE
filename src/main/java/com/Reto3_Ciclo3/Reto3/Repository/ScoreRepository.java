@@ -1,5 +1,6 @@
 package com.Reto3_Ciclo3.Reto3.Repository;
-import com.Reto3_Ciclo3.Reto3.Model.Score;
+
+import com.Reto3_Ciclo3.Reto3.Models.Score;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,21 +10,21 @@ import java.util.Optional;
 @Repository
 public class ScoreRepository {
     @Autowired
-    private ScoreCRUDRepository scoreCRUDRepository;
+    private ScoreCRUDRepository scoreCrudRepository;
 
-    public  List<Score>getAll(){
-        return (List<Score>)  scoreCRUDRepository.findAll();
+    public List<Score> getAll(){
+        return (List<Score>) scoreCrudRepository.findAll();
     }
 
-    public Optional<Score>getScore(int id){
-        return scoreCRUDRepository.findById(id);
-    }
-    public Score save(Score score) {
-        return scoreCRUDRepository.save(score);
+    public Optional<Score> getScore(int score_id){
+        return scoreCrudRepository.findById(score_id);
     }
 
-    public void deleteScore(Score score) {
-        scoreCRUDRepository.delete(score);
+    public  Score save(Score score){
+        return scoreCrudRepository.save(score);
     }
 
+    public void delete(Score score){
+        scoreCrudRepository.delete(score);
+    }
 }

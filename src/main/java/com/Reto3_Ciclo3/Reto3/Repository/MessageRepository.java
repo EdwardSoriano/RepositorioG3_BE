@@ -1,7 +1,6 @@
 package com.Reto3_Ciclo3.Reto3.Repository;
 
-
-import com.Reto3_Ciclo3.Reto3.Model.Message;
+import com.Reto3_Ciclo3.Reto3.Models.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,19 +10,22 @@ import java.util.Optional;
 @Repository
 public class MessageRepository {
     @Autowired
-    private MessageCRUDRepository messageCRUDRepository;
+    private MessageCRUDRepository messageCrudRepository;
 
-    public List<Message> getAll() {
-        return (List<Message>) messageCRUDRepository.findAll();
+    public List<Message> getAll(){
+        return (List<Message>) messageCrudRepository.findAll();
     }
 
-    public Optional<Message> getMessage(int idMessage) {
-        return messageCRUDRepository.findById(idMessage);
+    public Optional<Message> getMessage(int message_id){
+        return messageCrudRepository.findById(message_id);
     }
-    public Message save(Message message) {
-        return messageCRUDRepository.save(message);
+
+    public Message save(Message message){
+        return messageCrudRepository.save(message);
     }
+
     public void delete(Message message){
-        messageCRUDRepository.delete(message);
+        messageCrudRepository.delete(message);
     }
+
 }

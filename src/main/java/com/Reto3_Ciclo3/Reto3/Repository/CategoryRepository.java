@@ -1,6 +1,6 @@
 package com.Reto3_Ciclo3.Reto3.Repository;
 
-import com.Reto3_Ciclo3.Reto3.Model.Category;
+import com.Reto3_Ciclo3.Reto3.Models.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,20 +9,24 @@ import java.util.Optional;
 
 @Repository
 public class CategoryRepository {
-    @Autowired
-    private CategoryCRUDRepository categoryCRUDRepository;
 
-    public List<Category> getAll() {
-        return (List<Category>) categoryCRUDRepository.findAll();
-    }
 
-    public Optional<Category> getCategory(int id) {
-        return categoryCRUDRepository.findById(id);
+        @Autowired
+        private CategoryCRUDRepository categoryCrudRepository;
+
+        public List<Category> getAll(){
+            return (List<Category>)categoryCrudRepository.findAll();
+        }
+
+        public Optional<Category> getCategory(int id){
+            return categoryCrudRepository.findById(id);
+        }
+
+        public Category save(Category category){
+            return categoryCrudRepository.save(category);
+        }
+
+        public void delete(Category category){
+            categoryCrudRepository.delete(category);
+        }
     }
-    public Category save(Category category) {
-        return categoryCRUDRepository.save(category);
-    }
-    public void deleteCategory(Category category){
-        categoryCRUDRepository.delete(category);
-    }
-}

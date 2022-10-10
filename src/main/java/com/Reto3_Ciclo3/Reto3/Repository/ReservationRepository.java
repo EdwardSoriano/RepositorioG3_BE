@@ -1,6 +1,6 @@
 package com.Reto3_Ciclo3.Reto3.Repository;
 
-import com.Reto3_Ciclo3.Reto3.Model.Reservation;
+import com.Reto3_Ciclo3.Reto3.Models.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,23 +9,25 @@ import java.util.Optional;
 
 @Repository
 public class ReservationRepository {
+
     @Autowired
-    private  ReservationCRUDRepository reservationCRUDRepository;
+    private ReservationCRUDRepository reservationsCrudRepository;
 
-    public List<Reservation> getAll() {
-        return (List<Reservation>) reservationCRUDRepository.findAll();
+    public List<Reservation> getAll(){
+        return (List<Reservation>) reservationsCrudRepository.findAll();
     }
 
-    public Optional<Reservation> getReservation(int idReservation) {
-        return reservationCRUDRepository.findById(idReservation);
+    public Optional<Reservation> getReservation(int reservation_id){
+        return reservationsCrudRepository.findById(reservation_id);
     }
-    public Reservation save(Reservation reservation) {
-        return reservationCRUDRepository.save(reservation);
+
+    public Reservation save(Reservation reservation){
+        return reservationsCrudRepository.save(reservation);
     }
-    public void delete(Reservation reservation){
-        reservationCRUDRepository.delete(reservation);
+
+    public void deleteReservation(Reservation reservation){
+        reservationsCrudRepository.delete(reservation);
     }
 
 
 }
-
