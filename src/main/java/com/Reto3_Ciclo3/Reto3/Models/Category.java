@@ -2,16 +2,15 @@ package com.Reto3_Ciclo3.Reto3.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
+@Table(name="category")
 public class Category implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @Column(name = "id")
     private Integer id;
     @Column(name = "name", nullable = false, length = 45)

@@ -3,13 +3,12 @@ package com.Reto3_Ciclo3.Reto3.Models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="client")
-public class Client implements Serializable {
 
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
@@ -29,7 +28,7 @@ public class Client implements Serializable {
     @ManyToOne
     @JoinColumn(name = "reservations")
     @JsonIgnoreProperties("clients")
-    private Reservation reservation;
+    private Reservations reservation;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "clients")
     @JsonIgnoreProperties("message")
@@ -42,7 +41,7 @@ public class Client implements Serializable {
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
-    private List<Reservation> reservations;
+    private List<Reservations> reservations;
     public Integer getIdClient() {
         return idClient;
     }
@@ -91,21 +90,14 @@ public class Client implements Serializable {
         this.message = message;
     }
 
-    public Reservation getReservation() {
+    public Reservations getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservation reservation) {
+    public void setReservation(Reservations reservation) {
         this.reservation = reservation;
     }
 
-    public List<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
 
     public Ortopedic getOrtopedicC() {
         return ortopedicC;
@@ -115,11 +107,4 @@ public class Client implements Serializable {
         this.ortopedicC = ortopedicC;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
 }

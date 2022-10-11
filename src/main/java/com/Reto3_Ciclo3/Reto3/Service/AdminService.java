@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class AdminService {
+
     @Autowired
     private AdminRepository adminRepository;
 
@@ -22,20 +23,7 @@ public class AdminService {
     }
 
     public Admin insertAdmin(Admin admin){
-        if(admin.getId() != null){
-            Optional<Admin> adminTem = adminRepository.getAdmin(admin.getId());
-            if (adminTem.isEmpty()){
-                if (admin.getName() != null && admin.getEmail() != null && admin.getPassword() != null){
-                    return adminRepository.save(admin);
-                }else {
-                    return admin;
-                }
-            }else {
-                return admin;
-            }
-        }else {
-            return admin;
-        }
+        return adminRepository.save(admin);
     }
 
     public Admin updateAdmin(Admin admin){
@@ -45,8 +33,8 @@ public class AdminService {
                 if (admin.getName() != null ){
                     adminTem.get().setName(admin.getName());
                 }
-                if (admin.getEmail() != null){
-                    adminTem.get().setEmail(admin.getEmail());
+                if (admin.getCorreo() != null){
+                    adminTem.get().setCorreo(admin.getCorreo());
                 }
                 if (admin.getPassword() != null){
                     adminTem.get().setPassword(admin.getPassword());

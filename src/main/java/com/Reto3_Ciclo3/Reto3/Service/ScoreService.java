@@ -3,12 +3,13 @@ package com.Reto3_Ciclo3.Reto3.Service;
 import com.Reto3_Ciclo3.Reto3.Models.Score;
 import com.Reto3_Ciclo3.Reto3.Repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ScoreService {
-
     @Autowired
     private ScoreRepository scoreRepository;
 
@@ -21,20 +22,7 @@ public class ScoreService {
     }
 
     public Score insertScore(Score score){
-        if (score.getId() != null){
-            Optional<Score> scoreTem = scoreRepository.getScore(score.getId());
-            if (scoreTem.isEmpty()){
-                if (score.getScore() != null ){
-                    return scoreRepository.save(score);
-                }else {
-                    return score;
-                }
-            }else {
-                return score;
-            }
-        }else {
-            return score;
-        }
+        return scoreRepository.save(score);
     }
 
     public Score updateScore(Score score){
@@ -62,4 +50,3 @@ public class ScoreService {
         return success;
     }
 }
-

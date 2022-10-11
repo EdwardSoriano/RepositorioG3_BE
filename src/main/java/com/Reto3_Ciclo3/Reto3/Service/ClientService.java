@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Service
 public class ClientService {
-
     @Autowired
     private ClientRepository clientRepository;
 
@@ -23,20 +22,7 @@ public class ClientService {
     }
 
     public Client inserClient(Client client){
-        if (client.getIdClient() != null){
-            Optional<Client> clientTem = clientRepository.getClient(client.getIdClient());
-            if (clientTem.isEmpty()){
-                if (client.getName() != null && client.getEmail() != null && client.getAge() != null && client.getPassword() != null){
-                    return clientRepository.save(client);
-                }else {
-                    return client;
-                }
-            }else {
-                return client;
-            }
-        }else {
-            return client;
-        }
+        return clientRepository.save(client);
     }
 
     public Client updateClient(Client client){
@@ -73,4 +59,3 @@ public class ClientService {
 
     }
 }
-

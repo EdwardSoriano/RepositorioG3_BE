@@ -7,11 +7,10 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="message")
+@Table(name="category")
 public class Message implements Serializable {
-
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer idMessage;
 
     @Column(name = "messageText", nullable = false, length = 450)
@@ -31,9 +30,6 @@ public class Message implements Serializable {
     private Client clients;
 
 
-
-
-
     public Integer getIdMessage() {
         return idMessage;
     }
@@ -50,21 +46,6 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
-    public List<Ortopedic> getOrtopedic() {
-        return ortopedic;
-    }
-
-    public void setOrtopedic(List<Ortopedic> ortopedic) {
-        this.ortopedic = ortopedic;
-    }
-
-    public List<Client> getClient() {
-        return client;
-    }
-
-    public void setClient(List<Client> client) {
-        this.client = client;
-    }
 
     public Client getClients() {
         return clients;
@@ -74,4 +55,3 @@ public class Message implements Serializable {
         this.clients = clients;
     }
 }
-

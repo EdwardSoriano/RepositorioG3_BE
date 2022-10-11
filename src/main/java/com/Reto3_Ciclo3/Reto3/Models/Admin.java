@@ -6,12 +6,11 @@ import java.io.Serializable;
 @Entity
 @Table(name="admin")
 public class Admin implements Serializable {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String email;
+    private String correo;
     private String password;
 
     public Integer getId() {
@@ -30,12 +29,12 @@ public class Admin implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getPassword() {
@@ -45,7 +44,5 @@ public class Admin implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }
 

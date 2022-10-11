@@ -28,4 +28,3 @@ public class ClientRepository {
         clientCrudRepository.delete(client);
     }
 }
-

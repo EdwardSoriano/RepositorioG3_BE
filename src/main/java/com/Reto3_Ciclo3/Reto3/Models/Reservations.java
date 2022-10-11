@@ -9,9 +9,11 @@ import java.util.List;
 
 @Entity
 @Table(name="reservations")
-public class Reservation implements Serializable {@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
-private Integer idReservation;
+
+public class Reservations implements Serializable {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
     private String status="created";
@@ -83,13 +85,6 @@ private Integer idReservation;
         this.ortopedicList = ortopedicList;
     }
 
-    public List<Client> getClients() {
-        return clients;
-    }
-
-    public void setClients(List<Client> clients) {
-        this.clients = clients;
-    }
 
     public Client getClient() {
         return client;

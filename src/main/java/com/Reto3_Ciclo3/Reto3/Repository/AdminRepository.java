@@ -13,7 +13,7 @@ public class AdminRepository {
     private AdminCRUDRepository adminCrudRepository;
 
     public List<Admin> getAll(){
-        return (List<Admin>) adminCrudRepository.findAll();
+        return (List<Admin>)adminCrudRepository.findAll();
     }
 
     public Optional<Admin> getAdmin(int admin_id){

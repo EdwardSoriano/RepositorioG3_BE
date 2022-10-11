@@ -1,7 +1,7 @@
 package com.Reto3_Ciclo3.Reto3.Service;
 
-import com.Reto3_Ciclo3.Reto3.Models.Reservation;
-import com.Reto3_Ciclo3.Reto3.Repository.ReservationRepository;
+import com.Reto3_Ciclo3.Reto3.Models.Reservations;
+import com.Reto3_Ciclo3.Reto3.Repository.ReservationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,38 +9,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReservationService {
+public class ReservationsService {
     @Autowired
-    private ReservationRepository reservationsRepository;
+    private ReservationsRepository reservationsRepository;
 
-    public List<Reservation> getAllReservations(){
+    public List<Reservations> getAllReservations(){
         return reservationsRepository.getAll();
     }
 
-    public Optional<Reservation> getReservation(int reservation_id){
+    public Optional<Reservations> getReservation(int reservation_id){
         return reservationsRepository.getReservation(reservation_id);
     }
 
-    public Reservation insertReservation(Reservation reservations){
-        if (reservations.getIdReservation() != null){
-            Optional<Reservation> reservationTem = reservationsRepository.getReservation(reservations.getIdReservation());
-            if(reservationTem.isEmpty()){
-                if (reservations.getStartDate() != null && reservations.getDevolutionDate() != null && reservations.getStatus() != null){
-                    return reservationsRepository.save(reservations);
-                }else {
-                    return reservations;
-                }
-            }else {
-                return reservations;
-            }
-        }else {
-            return reservations;
-        }
+    public Reservations insertReservation(Reservations reservations){
+        return reservationsRepository.save(reservations);
     }
 
-    public Reservation updateReservation(Reservation reservations){
+    public Reservations updateReservation(Reservations reservations){
         if (reservations.getIdReservation() != null){
-            Optional<Reservation> reservationTem = reservationsRepository.getReservation(reservations.getIdReservation());
+            Optional<Reservations> reservationTem = reservationsRepository.getReservation(reservations.getIdReservation());
             if (!reservationTem.isEmpty()){
                 if (reservations.getStartDate() != null){
                     reservationTem.get().setStartDate(reservations.getStartDate());
@@ -62,9 +49,10 @@ public class ReservationService {
 
     public Boolean deleteReservation(int reservation_id){
         Boolean success = reservationsRepository.getReservation(reservation_id).map(reservations -> {
-            reservationsRepository.deleteReservation(reservations);
+            reservationsRepository.delete(reservations);
             return true;
         }).orElse(false);
         return success;
     }
 }
+
