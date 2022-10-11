@@ -19,7 +19,7 @@ public class Score  implements Serializable {
     @JsonIgnoreProperties("scores")
     private Reservations reservations;
 
-    @OneToOne(cascade = {CascadeType.PERSIST}, mappedBy = "score")
+    @OneToOne(cascade = {CascadeType.PERSIST}, mappedBy = "score") // relaciones
     @JsonIgnoreProperties("score")
     private Reservations reservation;
 
